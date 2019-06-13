@@ -10,8 +10,11 @@ import {
 } from './styles.js';
 
 class Lightbox extends Component {
-	state = {
-		imageSelected: {},
+	state = { imageSelected: {} }
+
+	handleClose = event => {
+		event.stopPropagation();
+		this.props.history.goBack();
 	}
 
 	componentWillMount() {
@@ -20,16 +23,14 @@ class Lightbox extends Component {
 		];
 
 		// if ( !image ) return null;
-		this.setState( {
-			imageSelected: image,
-		} )
+		this.setState( { imageSelected: image } )
 	}
 
 	render() {
 		return (
 			<Wrap>
 				<OverFlowHidden />
-				<Backdrop />
+				<Backdrop onClick={ this.handleClose } />
 				<LightboxStyle>
 					<Image
 						src={ `${ process.env.PUBLIC_URL }/images/${ this.state.imageSelected.id }.jpg` }

@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 export const Wrap = styled.div`
-    display: grid;
-    grid-template-columns: repeat( 3, 200px );
-    gap: 4px;
     columns: 4;
     column-gap: 0;
 `

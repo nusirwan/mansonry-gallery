@@ -7,6 +7,7 @@ import IMAGES from './_DATA.json';
 import GlobalStyle from './base-styles/globalStyle';
 import Container from './components/Container';
 import Gallery from './components/Gallery';
+import Lightbox from './components/Lightbox';
 
 const App = () => {
 	return (
@@ -19,6 +20,12 @@ const App = () => {
 						path="/"
 						render={ props =>
 							<Gallery { ...props } images={ IMAGES } />
+						}
+					/>
+					<Route
+						path="/images/:id"
+						render={ props =>
+							<Lightbox { ...props } images={ IMAGES } />
 						}
 					/>
 				</Switch>

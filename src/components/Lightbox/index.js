@@ -15,7 +15,20 @@ class Lightbox extends Component {
 	handleClose = event => {
 		event.stopPropagation();
 		this.props.history.goBack();
-	}
+	};
+
+	handleKeyPress = event => {
+
+		// enter key
+		if ( event.keyCode === 13 ) {
+			event.preventDefault();
+		}
+
+		// escape key
+		if ( event.keyCode === 27 ) {
+			this.handleClose( event );
+		}
+	};
 
 	componentWillMount() {
 		let image = this.props.images[
@@ -24,6 +37,12 @@ class Lightbox extends Component {
 
 		// if ( !image ) return null;
 		this.setState( { imageSelected: image } )
+
+		document.addEventListener( 'keydown', this.handleKeyPress );
+	}
+
+	componentWillUnmount() {
+		document.removeEventListener( 'keydown', this.handleKeyPress );
 	}
 
 	render() {

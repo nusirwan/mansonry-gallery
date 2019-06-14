@@ -8,6 +8,7 @@ import GlobalStyle from './base-styles/globalStyle';
 import Container from './components/Container';
 import Gallery from './components/Gallery';
 import Lightbox from './components/Lightbox';
+import ImageView from './components/ImageView';
 
 class App extends Component {
 	previousLocation = this.props.location;
@@ -42,6 +43,12 @@ class App extends Component {
 							path="/"
 							render={ props =>
 								<Gallery { ...props } images={ IMAGES } />
+							}
+						/>
+						<Route
+							path="/images/:id"
+							render={ props =>
+								<ImageView { ...props } images={ IMAGES } />
 							}
 						/>
 					</Switch>

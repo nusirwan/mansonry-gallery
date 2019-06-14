@@ -12,7 +12,7 @@ function Gallery( { images } ) {
 					to={ {
 						pathname: `/images/${ item.id }`,
 						// this is the trick!
-						state: { modal: true },
+						state: { lightbox: true },
 					} }
 				>
 					<ImageFrame>
